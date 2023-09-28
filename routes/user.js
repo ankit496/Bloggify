@@ -22,15 +22,20 @@ router.post('/signin',async(req,res)=>{
 })
 router.post('/signup',async (req,res)=>{
     console.log(req.body)
-    // const {fullname,email,password}=req.body
-    // await db.create({
-    //     fullname:fullname,
-    //     email:email,
-    //     password:password
-    // })
-    const newUser=new User(req.body)
-    await newUser.save()
-    return res.redirect("/")
+    const {fullname,email,password}=req.body
+    await User.create({
+        fullname:fullname,
+        email:email,
+        password:password
+    })
+    try{
+        const token=await User.matchPasswordandGenerateToken(email,password)
+        console.log(token)
+        res.cookie('token',token).redirect("/")
+    }
+    catch(error){
+
+    }
 })
 router.get('/logout',(req,res)=>{
    res.clearCookie('token').redirect("/") 
