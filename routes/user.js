@@ -11,7 +11,6 @@ router.post('/signin',async(req,res)=>{
     const {email,password}=req.body
     try{
         const token=await User.matchPasswordandGenerateToken(email,password)
-        console.log(token)
         res.cookie('token',token).redirect("/")
     }
     catch(error){
@@ -21,7 +20,6 @@ router.post('/signin',async(req,res)=>{
     }
 })
 router.post('/signup',async (req,res)=>{
-    console.log(req.body)
     const {fullname,email,password}=req.body
     await User.create({
         fullname:fullname,

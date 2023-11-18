@@ -4,13 +4,14 @@
     <%- include("./partials/head") %>
     <title>HomePage2</title>
   </head>
-  <body>
+  <link rel="stylesheet" href="/css/index.css">
+  <body class="image">
     <%- include("./partials/navbar") %>
     <div class="container mt-3">
       <div class="row row-cols-4">
         <% blogs.forEach(blog => { %>
-        <div class="card col" style="width: 18rem">
-          <img src="<%=blog.coverImageURL%>" class="card-img-top" alt="..." />
+        <div class="card col image" style="width: 18rem">
+          <img src="<%=blog.coverImageURL%>" class="card-img-top coverImage" alt="..." />
           <div class="card-body">
             <h5 class="card-title"><%=blog.title%></h5>
             <a href="/blog/<%=blog._id%>" class="btn btn-primary">View</a>

@@ -1,0 +1,12 @@
+.image{
+    background-image: url("pexels-francesco-ungaro-998641.jpg");
+    background-size: cover;
+    color:white
+}
+.coverImage{
+    height: 100px;
+    width: 100px;
+}
+/* html *{
+    color:white !important
+} */
